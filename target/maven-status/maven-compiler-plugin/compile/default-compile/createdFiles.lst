@@ -1,0 +1,6 @@
+org\mcbot\mcbotnew\MCBotNew.class
+OpenAI\OpenAiService.class
+OpenAI\OpenAiMessage.class
+OpenAI\OpenAiChoice.class
+OpenAI\OpenAiResponse.class
+OpenAI\HiddenKeys.class

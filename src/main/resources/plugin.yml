@@ -1,0 +1,23 @@
+name: MCBotNew
+version: '${project.version}'
+main: org.mcbot.mcbotnew.MCBotNew
+api-version: '1.21'
+commands:
+  GPT:
+    description: Get a response from GPT-3
+    usage: /GPT <question>
+  sethome:
+    description: Set your home location
+    usage: /sethome
+  home:
+    description: Get your home coordinates
+    usage: /home
+  setdeathnotify:
+    description: Enable or disable death coordinates notification
+    usage: /setdeathnotify <on|off>
+  setcoord:
+    description: Save a custom coordinate
+    usage: /setcoord <name>
+  getcoord:
+    description: Retrieve a saved custom coordinate
+    usage: /getcoord <name>

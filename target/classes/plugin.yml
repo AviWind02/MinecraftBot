@@ -1,0 +1,8 @@
+name: MCBotNew
+version: '1.0-SNAPSHOT'
+main: org.mcbot.mcbotnew.MCBotNew
+api-version: '1.21'
+commands:
+  GPT:
+    description: Says hello
+    usage: /GPT
