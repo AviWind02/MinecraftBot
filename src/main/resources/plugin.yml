@@ -21,3 +21,8 @@ commands:
   getcoord:
     description: Retrieve a saved custom coordinate
     usage: /getcoord <name>
+  listcoords:
+    description: List all saved coordinates
+    usage: /listcoords
+  ping:
+    description: Enable or disable the ping system

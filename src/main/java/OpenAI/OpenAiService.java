@@ -41,7 +41,7 @@ public class OpenAiService {
                 Map.of("role", "user", "content", content)
         ));
         data.put("temperature", 1);
-        data.put("max_tokens", 1500);
+        data.put("max_tokens", 150);
         data.put("top_p", 1);
         data.put("frequency_penalty", 0);
         data.put("presence_penalty", 0);

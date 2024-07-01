@@ -1,64 +1,81 @@
 package org.mcbot.mcbotnew;
 
-import OpenAI.OpenAiService;
+import Mods.Player.CarryRideEntity;
 import coordinate.CoordFunctions;
+import OpenAI.OpenAiBot;
+import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ItemType;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Vector;
 
-import java.io.IOException;
+import java.util.List;
 
-public final class MCBotNew extends JavaPlugin {
+import static org.bukkit.block.BlockType.AIR;
 
-    private OpenAiService openAiService;
+public final class MCBotNew extends JavaPlugin implements Listener {
+
+    private OpenAiBot openAiBot;
     private CoordFunctions coordFunctions;
+    private CarryRideEntity carryRideEntity;
 
     @Override
     public void onEnable() {
-        // Registering the command "/question"
+        // Registering the command "/GPT"
         this.getCommand("GPT").setExecutor(this);
-        getLogger().info("MC Bot plugin has been enabled.");
+        getLogger().info("Minecraft plugin has been enabled!");
 
-        // Initialize OpenAiService
-        openAiService = new OpenAiService();
+        // Initialize OpenAiBot
+        openAiBot = new OpenAiBot();
 
         // Initialize and register CoordFunctions
-        coordFunctions = new CoordFunctions();
+        coordFunctions = new CoordFunctions(this);
         coordFunctions.registerEvents();
+
+        carryRideEntity = new CarryRideEntity();
+        // Register the event listener
+        getServer().getPluginManager().registerEvents(this, this);
+
+
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("GPT")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                if (args.length == 0) {
-                    player.sendMessage("Please provide a question.");
-                    return true;
-                }
-
-                String question = String.join(" ", args);
-                player.sendMessage("One moment, thinking...");
-
-                // Run the OpenAI request in a separate thread to avoid blocking the server
-                new Thread(() -> {
-                    try {
-                        String response = openAiService.questionAsync(question);
-                        player.sendMessage("Response: " + response);
-                    } catch (IOException e) {
-                        player.sendMessage("Failed to get response from OpenAI: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                }).start();
-
-            } else {
-                sender.sendMessage("Only players can execute this command!");
-            }
+        if (openAiBot.onCommand(sender, command, label, args)) {
             return true;
         }
 
-        // Delegate coordinate-related commands to CoordFunctions
+        if (carryRideEntity.onCommand(sender, command, label, args)) {
+            return true;
+        }
+
         return coordFunctions.onCommand(sender, command, label, args);
     }
+
+    // Event handler for player interactions
+
+    @EventHandler
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+
+        carryRideEntity.onPlayerInteractCarryRide(event);
+    }
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+
+        carryRideEntity.onPlayerInteractRemoveRider(event);
+    }
+
 }

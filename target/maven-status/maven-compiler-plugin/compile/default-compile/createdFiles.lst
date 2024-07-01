@@ -1,6 +1,9 @@
 org\mcbot\mcbotnew\MCBotNew.class
 OpenAI\OpenAiService.class
 OpenAI\OpenAiMessage.class
+coordinate\CoordFunctions.class
 OpenAI\OpenAiChoice.class
 OpenAI\OpenAiResponse.class
+OpenAI\OpenAiBot.class
 OpenAI\HiddenKeys.class
+Mods\Player\CarryRideEntity.class
