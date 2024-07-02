@@ -1,6 +1,6 @@
 name: MCBotNew
 version: '${project.version}'
-main: org.mcbot.mcbotnew.MCBotNew
+main: org.mcbot.mcbotnew.Main
 api-version: '1.21'
 commands:
   GPT:
@@ -26,3 +26,6 @@ commands:
     usage: /listcoords
   ping:
     description: Enable or disable the ping system
+
+
+

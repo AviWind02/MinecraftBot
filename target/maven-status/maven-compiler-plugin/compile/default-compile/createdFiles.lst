@@ -1,7 +1,9 @@
-org\mcbot\mcbotnew\MCBotNew.class
+Mods\World\Portal.class
 OpenAI\OpenAiService.class
+org\mcbot\mcbotnew\Main.class
 OpenAI\OpenAiMessage.class
 coordinate\CoordFunctions.class
+Mods\World\Portal$1.class
 OpenAI\OpenAiChoice.class
 OpenAI\OpenAiResponse.class
 OpenAI\OpenAiBot.class

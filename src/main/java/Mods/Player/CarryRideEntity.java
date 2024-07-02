@@ -22,8 +22,6 @@ public class CarryRideEntity {
 
     public void onPlayerInteractCarryRide(PlayerInteractEntityEvent event) {
 
-        if(!carryPlugin)
-            return;
 
         Player player = event.getPlayer();//Get the player who performed the interaction
         ItemStack itemInHand = player.getInventory().getItemInMainHand();// Get the item in the player's main hand
@@ -32,7 +30,6 @@ public class CarryRideEntity {
         if(isHandEmpty) // If hand is empty ride entity.
         {
             Entity clickedEntity = event.getRightClicked();// Get the entity that was right-clicked
-            event.getPlayer().sendMessage("You right-clicked an entity: " + clickedEntity.getType());//Just log it here
             if(toggleRide) {
                 clickedEntity.addPassenger(player);//Ride Clicked Entity
             }
@@ -43,8 +40,6 @@ public class CarryRideEntity {
     }
     public void onPlayerInteractRemoveRider(PlayerInteractEvent event) {
 
-        if(!carryPlugin)
-            return;
 
         Player player = event.getPlayer();//Get the player who performed the interaction
         ItemStack itemInHand = player.getInventory().getItemInMainHand();// Get the item in the player's main hand
