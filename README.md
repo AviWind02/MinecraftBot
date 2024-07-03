@@ -1,6 +1,6 @@
 # MCBotNew Plugin
 
-MCBotNew is a Minecraft Spigot plugin that provides various fun and useful functionalities such as carrying/riding players, creating portal blocks, and handling basic coordinate functions. It also integrates with the OpenAI API for in game support.
+This MinecraftBot is a Minecraft Spigot plugin that provides various fun and useful functionalities such as carrying/riding players, creating portal blocks, and handling basic coordinate functions. It also integrates with the OpenAI API for in game support.
 
 ## Features
 
